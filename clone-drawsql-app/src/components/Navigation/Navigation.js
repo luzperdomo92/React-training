@@ -15,7 +15,7 @@ const Navigation = () => {
   return (
     <nav className="nav">
       <div className="nav__main">
-        <a href="!#" className="nav__index">
+        <a href="#" className="nav__index">
           <img src="./database.svg" alt="drawsql-logo" className="nav__logo" />
           <div className="nav__name">
             draw<span className="nav__name--big">SQL</span>
@@ -28,7 +28,7 @@ const Navigation = () => {
       </div>
 
       <div className="nav__type-name">
-        <a href="" className="nav__type-document">Diagrams</a>
+        <a href="#" className="nav__type-document">Diagrams</a>
         <span className="color-lila"> > </span>
         copy react
       </div>
