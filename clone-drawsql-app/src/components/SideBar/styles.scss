@@ -1,0 +1,101 @@
+@import '../../styles/base.scss';
+
+.sideBar {
+  $this: &;
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+
+    // &:checked ~ #{$this}__label {
+    //   background: $drawer-color;
+    // }
+
+    &:checked ~ #{$this}__label {
+      left: 0px;
+    }
+
+    &:checked ~ #{$this}__label::before {
+      content: '❯';
+    }
+
+    &:checked ~ #{$this}__nav {
+      left: -300px;
+    }
+  }
+
+  &__label {
+    user-select: none;
+    left: 300px;
+    height:35px;
+    width: 35px;
+    display: block;
+    position: fixed;
+    background: $drawer-color;
+    margin: .5rem 0;
+    border-radius: 0.25rem;
+    z-index: 1;
+    cursor: pointer;
+
+    &:hover::before {
+      color: #6fbfc0;
+    }
+
+    &:before {
+      content: '❮';
+      display: block;
+      position: absolute;
+      color: #000;
+      left: 13px;
+      top: 7px;
+
+    }
+
+    &:hover {
+      background: #cbd5e0;
+    }
+  }
+
+  &__nav {
+    position: fixed;
+    left: 0px;
+    height: 100%;
+    width: 300px;
+    overflow-x: hidden;
+    box-shadow: 1px 0px 8px -6px #000000;
+    background: $light-color;
+  }
+
+  &__newTable {
+    padding: 8px 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #b8c2cc;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+  }
+
+  &__name {
+    font-size: $font-size-large;
+    line-height: $line-height-extra-large;
+    margin-left: 12px;
+  }
+
+  &__addTable {
+    background: #38b2ac;
+    border: 2px solid #38b2ac;
+    color: $light-color;
+    cursor: pointer;
+    font-size: $font-size-small;
+    padding: 8px;
+    margin-right: 12px;
+    border-radius: 4px;
+
+
+    &:hover {
+      background: #319795;
+      border: 2px solid #319795;
+    }
+  }
+
+}
