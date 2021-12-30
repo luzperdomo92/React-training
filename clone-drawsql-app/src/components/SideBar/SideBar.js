@@ -1,23 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
+import Table from "../Table/Table";
+import { columnData } from "../../services/tableColumns.js";
+import { v4 as uuidv4 } from "uuid";
 import "./styles.scss";
 
-const SideBar = () => {
+const SideBar = ({ setDbTables, dbTables }) => {
+  const tableData = {
+    id: uuidv4(),
+    name: "",
+    columns: [],
+    indexes: [],
+    comment: "",
+    color: "",
+  };
+
+  const createTable = () => {
+    setDbTables([
+      ...dbTables,
+      {
+        ...tableData,
+        id: uuidv4(),
+        columns: [{ ...columnData, id: uuidv4() }],
+      },
+    ]);
+  };
+
   return (
-    <section className="sideBar">
+    <aside className="sideBar">
       <input type="checkbox" id="menu" className="sideBar__input" />
       <label className="sideBar__label" htmlFor="menu"></label>
-      <nav className="sideBar__nav">
+      <section className="sideBar__nav">
         <div className="sideBar__newTable">
           <div className="sideBar__name">Tables</div>
-          <button
-            className="sideBar__addTable"
-            onClick={() => console.log("new Table ...")}
-          >
+          <button className="sideBar__addTable" onClick={createTable}>
             &#x271A; New Table
           </button>
         </div>
-      </nav>
-    </section>
+        <div className="sideBar__tables">
+          <ul className="sideBar__list-tables">
+            {dbTables &&
+              dbTables.map((tableObj, index) => (
+                <Table
+                  key={tableObj.id}
+                  index={index}
+                  tableObj={tableObj}
+                  dbTables={dbTables}
+                  setDbTables={setDbTables}
+                />
+              ))}
+          </ul>
+        </div>
+      </section>
+    </aside>
   );
 };
 

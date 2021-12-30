@@ -7,10 +7,6 @@
     position: absolute;
     opacity: 0;
 
-    // &:checked ~ #{$this}__label {
-    //   background: $drawer-color;
-    // }
-
     &:checked ~ #{$this}__label {
       left: 0px;
     }
@@ -98,4 +94,7 @@
     }
   }
 
+  &__tables {
+    overflow-y: hidden;
+  }
 }
