@@ -5,12 +5,11 @@ const Navigation = () => {
 
   const saveChanges = () => {
     console.log("saving changes...");
-  }
+  };
 
   const showPopUp = () => {
     console.log("showing Pop up...");
-  }
-
+  };
 
   return (
     <nav className="nav">
@@ -45,18 +44,14 @@ const Navigation = () => {
           Save
         </button>
 
-        <button
-          className="pop-up pop-up--radius"
-          onClick={showPopUp}
-        >
-          <img src="./down-arrow.svg" alt="" className="pop-up__arrow"/>
+        <button className="pop-up pop-up--radius" onClick={showPopUp}>
+          <img src="./down-arrow.svg" alt="" className="pop-up__arrow" />
         </button>
 
         <div className="nav__profile">
           <img src="./account.png" alt="test-picture-profile" />
         </div>
       </div>
-
     </nav>
   );
 };
