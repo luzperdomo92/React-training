@@ -32,7 +32,7 @@ const SideBar = ({ setDbTables, dbTables }) => {
       <section className="sideBar__nav">
         <div className="sideBar__newTable">
           <div className="sideBar__name">Tables</div>
-          <button className="sideBar__addTable" onClick={createTable}>
+          <button className="button button-full" onClick={createTable}>
             &#x271A; New Table
           </button>
         </div>

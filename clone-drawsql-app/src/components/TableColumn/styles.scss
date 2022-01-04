@@ -44,7 +44,7 @@
     justify-content: space-between;
     flex-basis: 33%;
     padding-left: 4px;
-    align-content: center;
+    align-items: center;
   }
 
   &__button {
@@ -54,6 +54,7 @@
     background-color: transparent;
     border: 2px solid transparent;
     cursor: pointer;
+    text-align: center;
     &:hover {
       background: #edf2f7;
     }

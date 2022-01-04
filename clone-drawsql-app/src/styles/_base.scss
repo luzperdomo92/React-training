@@ -42,3 +42,44 @@ img {
 .content {
   display: flex;
 }
+
+.button {
+  background: transparent;
+  border: 2px solid #38b2ac;
+  color: $light-color;
+  cursor: pointer;
+  font-size: $font-size-small;
+  padding: 8px;
+  margin-right: 12px;
+  border-radius: 4px;
+
+  &:hover {
+    background: #319795;
+    border: 2px solid #319795;
+  }
+}
+
+.button-full {
+  background: #38b2ac;
+}
+
+.button-light {
+  color: #38b2ac;
+  border: 1px solid #38b2ac;
+  font-weight: $font-weight-bold;
+  &:hover {
+    background: #e6fffa;
+    border: 1px solid #38b2ac;
+  }
+}
+
+.button-off {
+  color: $drawer-color;
+  font-weight: $font-weight-bold;
+  border: 1px solid $drawer-color;
+  &:hover {
+    background: #f7fafc;
+    border: 1px solid $drawer-color;
+
+  }
+}

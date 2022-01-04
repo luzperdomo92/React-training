@@ -12,12 +12,15 @@
     background: #f5faff;
   }
 
+  &:hover #{$this}__button {
+    display: flex;
+  }
 
   &__input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
-    width: 100%;
+    width: 76%;
     height: 100%;
 
     &:checked {
@@ -43,6 +46,7 @@
     height: 40px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
   }
 
   &__name {
@@ -51,6 +55,24 @@
     white-space: nowrap;
     width: 170px;
   }
+
+  &__buttons {
+    display:flex;
+  }
+
+  &__button {
+    padding: 8px 5px;
+    border-radius: 0.25rem;
+    background-color: transparent;
+    border: 2px solid transparent;
+    cursor: pointer;
+    color: #2f365f;
+    display: none;
+    &:hover {
+      background: #a3bffa;
+    }
+  }
+
   &__details {
     padding-right: 4px;
     border-bottom: 1px solid #edf2f7;
@@ -61,11 +83,12 @@
   }
 
   &__row {
-    padding: 4px 0 4px 8px;
+    padding: 8px;
+    border-top: 1px solid #edf2f7;
+    margin-top: 4px;
     display: flex;
     justify-content: space-between;
   }
-
 }
 
 

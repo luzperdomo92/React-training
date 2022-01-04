@@ -8,6 +8,11 @@ const TableColumn = ({ column, columns, setcolumns, index }) => {
     setColumnName(e.target.value);
   };
 
+  const deleteComlum = () => {
+    setcolumns(columns.filter((currentColumn) => currentColumn.id !== column.id))
+  }
+
+
   useEffect(() => {
     columns[columns.indexOf(column)] = { ...column, name: columnName };
     setcolumns([...columns]);
@@ -33,7 +38,7 @@ const TableColumn = ({ column, columns, setcolumns, index }) => {
       <div className="details__options">
         <button className="details__button"> N </button>
         <button className="details__button">&#128477;</button>
-        <button className="details__button">&hellip;</button>
+        <button className="details__button" onClick={deleteComlum}>&#128465;</button>
       </div>
     </div>
   );
