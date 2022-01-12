@@ -1,22 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./styles.scss";
 
-const TableColumn = ({ column, columns, setcolumns, index }) => {
-  const [columnName, setColumnName] = useState("");
-
-  const setNameColumn = (e) => {
-    setColumnName(e.target.value);
-  };
-
-  const deleteComlum = () => {
-    setcolumns(columns.filter((currentColumn) => currentColumn.id !== column.id))
-  }
-
-
-  useEffect(() => {
-    columns[columns.indexOf(column)] = { ...column, name: columnName };
-    setcolumns([...columns]);
-  }, [columnName]);
+const TableColumn = ({ deleteColumn, index, setNameColumn }) => {
 
   return (
     <div className="details">
@@ -38,7 +23,7 @@ const TableColumn = ({ column, columns, setcolumns, index }) => {
       <div className="details__options">
         <button className="details__button"> N </button>
         <button className="details__button">&#128477;</button>
-        <button className="details__button" onClick={deleteComlum}>&#128465;</button>
+        <button className="details__button" onClick={deleteColumn}>&#128465;</button>
       </div>
     </div>
   );

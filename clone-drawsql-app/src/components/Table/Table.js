@@ -1,38 +1,7 @@
-import React, { Fragment, useState, useEffect } from "react";
-import TableColumn from "../TableColumn/TableColumn";
-import Indexes from "../Indexes/Indexes";
-import { columnData } from "../../services/tableColumns.js";
-import { indexesData } from "../../services/indexes.js";
-import { v4 as uuidv4 } from "uuid";
+import React, { Fragment }from "react";
 import "./styles.scss";
 
-const Table = ({ index, tableObj, dbTables, setDbTables }) => {
-  const [columns, setcolumns] = useState(tableObj.columns);
-  const [indexes, setIndexes] = useState(tableObj.indexes);
-  const [indexComponent, setIndexComponent] = useState(false);
-
-  const addColumn = () => {
-    setcolumns([...columns, { ...columnData, id: uuidv4() }]);
-  };
-
-  const addIndex = () => {
-    setIndexes([...indexes, { ...indexesData, id: uuidv4() }]);
-    setIndexComponent(true);
-  };
-
-  const deleteTable = () => {
-    setDbTables(dbTables.filter((table) => table.id !== tableObj.id));
-  };
-
-
-  useEffect(() => {
-    dbTables[dbTables.indexOf(tableObj)] = {
-      ...tableObj,
-      columns: columns,
-      indexes: indexes,
-    };
-    setDbTables([...dbTables]);
-  }, [columns, indexes]);
+const Table = ({ index, handleDeleteTable, addColumn, addIndex, children }) => {
 
   return (
     <Fragment>
@@ -44,33 +13,13 @@ const Table = ({ index, tableObj, dbTables, setDbTables }) => {
           <div className="table__name">{`Table_${index + 1}`}</div>
           <div className="table__buttons">
             <button className="table__button">&#128221;</button>
-            <button className="table__button" onClick={deleteTable}>
+            <button className="table__button" onClick={handleDeleteTable}>
               &#128465;
             </button>
           </div>
         </div>
         <div className="table__details">
-          <div className="table__data">
-            {columns &&
-              columns.map((column, index) => (
-                <TableColumn
-                  key={column.id}
-                  column={column}
-                  columns={columns}
-                  setcolumns={setcolumns}
-                  index={index}
-                />
-              ))}
-
-            {indexComponent ? (
-              <Indexes
-                columns={columns}
-                indexes={indexes}
-                setIndexes={setIndexes}
-                setIndexComponent={setIndexComponent}
-              />
-            ) : null}
-          </div>
+          <div className="table__data">{children}</div>
 
           <div className="table__data">
             <div className="table__row">

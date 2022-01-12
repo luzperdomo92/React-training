@@ -1,33 +1,23 @@
 import React, { useState } from "react";
-import Table from "../Table/Table";
-import { columnData } from "../../services/tableColumns.js";
-import { v4 as uuidv4 } from "uuid";
 import "./styles.scss";
 
-const SideBar = ({ setDbTables, dbTables }) => {
-  const tableData = {
-    id: uuidv4(),
-    name: "",
-    columns: [],
-    indexes: [],
-    comment: "",
-    color: "",
-  };
-
-  const createTable = () => {
-    setDbTables([
-      ...dbTables,
-      {
-        ...tableData,
-        id: uuidv4(),
-        columns: [{ ...columnData, id: uuidv4() }],
-      },
-    ]);
-  };
+const SideBar = ({ createTable, children }) => {
+  const [open, setOpen] = useState(false);
+  const toggleSideBar = () => {
+    console.log("toggleSidebar", open);
+    setOpen(!open)
+  }
 
   return (
     <aside className="sideBar">
-      <input type="checkbox" id="menu" className="sideBar__input" />
+      <input
+        type="checkbox"
+        id="menu"
+        className="sideBar__input"
+        // value={open}
+        defaultChecked={open}
+        onChange={toggleSideBar}
+      />
       <label className="sideBar__label" htmlFor="menu"></label>
       <section className="sideBar__nav">
         <div className="sideBar__newTable">
@@ -37,18 +27,7 @@ const SideBar = ({ setDbTables, dbTables }) => {
           </button>
         </div>
         <div className="sideBar__tables">
-          <ul className="sideBar__list-tables">
-            {dbTables &&
-              dbTables.map((tableObj, index) => (
-                <Table
-                  key={tableObj.id}
-                  index={index}
-                  tableObj={tableObj}
-                  dbTables={dbTables}
-                  setDbTables={setDbTables}
-                />
-              ))}
-          </ul>
+          <ul className="sideBar__list-tables">{children}</ul>
         </div>
       </section>
     </aside>
