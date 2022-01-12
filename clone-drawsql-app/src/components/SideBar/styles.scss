@@ -7,10 +7,6 @@
     position: absolute;
     opacity: 0;
 
-    // &:checked ~ #{$this}__label {
-    //   background: $drawer-color;
-    // }
-
     &:checked ~ #{$this}__label {
       left: 0px;
     }
@@ -81,21 +77,8 @@
     margin-left: 12px;
   }
 
-  &__addTable {
-    background: #38b2ac;
-    border: 2px solid #38b2ac;
-    color: $light-color;
-    cursor: pointer;
-    font-size: $font-size-small;
-    padding: 8px;
-    margin-right: 12px;
-    border-radius: 4px;
 
-
-    &:hover {
-      background: #319795;
-      border: 2px solid #319795;
-    }
+  &__tables {
+    overflow-y: hidden;
   }
-
 }

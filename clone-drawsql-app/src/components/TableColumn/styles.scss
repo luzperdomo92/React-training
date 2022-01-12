@@ -1,0 +1,62 @@
+@import '../../styles/base.scss';
+
+.details {
+  display: flex;
+  padding: 4px 0 4px 8px;
+  height: 40px;
+  &:hover {
+    background: #f5f7fa;
+  }
+
+  &__id {
+    flex-basis: 40%;
+    margin-right: 8px;
+  }
+
+  &__input-data {
+    text-overflow: ellipsis;
+    width: 100%;
+    padding: 4px 8px;
+    overflow: hidden;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    line-height: 1.25rem;
+    border-radius: 0.25rem;
+    border: 2px solid #fff;
+    appearance: none;
+    background-color: #fff;
+    &:focus {
+      border-color: #38b2ac;
+    }
+  }
+
+  &__type {
+    flex-basis: 25%;
+  }
+
+  &__input-type {
+    line-height: 1.25rem;
+    font-size: $font-size-small;
+  }
+
+  &__options {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 33%;
+    padding-left: 4px;
+    align-items: center;
+  }
+
+  &__button {
+    width: 100%;
+    padding: 8px 5px;
+    border-radius: 0.25rem;
+    background-color: transparent;
+    border: 2px solid transparent;
+    cursor: pointer;
+    text-align: center;
+    &:hover {
+      background: #edf2f7;
+    }
+  }
+}

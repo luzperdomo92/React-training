@@ -1,23 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.scss";
 
-const SideBar = () => {
+const SideBar = ({ createTable, children }) => {
+  const [open, setOpen] = useState(false);
+  const toggleSideBar = () => {
+    console.log("toggleSidebar", open);
+    setOpen(!open)
+  }
+
   return (
-    <section className="sideBar">
-      <input type="checkbox" id="menu" className="sideBar__input" />
+    <aside className="sideBar">
+      <input
+        type="checkbox"
+        id="menu"
+        className="sideBar__input"
+        // value={open}
+        defaultChecked={open}
+        onChange={toggleSideBar}
+      />
       <label className="sideBar__label" htmlFor="menu"></label>
-      <nav className="sideBar__nav">
+      <section className="sideBar__nav">
         <div className="sideBar__newTable">
           <div className="sideBar__name">Tables</div>
-          <button
-            className="sideBar__addTable"
-            onClick={() => console.log("new Table ...")}
-          >
+          <button className="button button-full" onClick={createTable}>
             &#x271A; New Table
           </button>
         </div>
-      </nav>
-    </section>
+        <div className="sideBar__tables">
+          <ul className="sideBar__list-tables">{children}</ul>
+        </div>
+      </section>
+    </aside>
   );
 };
 

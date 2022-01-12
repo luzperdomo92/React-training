@@ -27,7 +27,9 @@ const Navigation = () => {
       </div>
 
       <div className="nav__type-name">
-        <a href="#" className="nav__type-document">Diagrams</a>
+        <a href="#" className="nav__type-document">
+          Diagrams
+        </a>
         <span className="color-lila"> > </span>
         copy react
       </div>
@@ -49,7 +51,7 @@ const Navigation = () => {
         </button>
 
         <div className="nav__profile">
-          <img src="./account.png" alt="test-picture-profile" />
+          <img src="./account.png" alt="test-profile" />
         </div>
       </div>
     </nav>
