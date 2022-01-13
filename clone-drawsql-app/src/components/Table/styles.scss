@@ -54,6 +54,9 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 170px;
+    &-input {
+      z-index: 2;
+    }
   }
 
   &__buttons {

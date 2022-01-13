@@ -1,7 +1,43 @@
-import React, { Fragment }from "react";
+import React, { Fragment, useState } from "react";
 import "./styles.scss";
 
-const Table = ({ index, handleDeleteTable, addColumn, addIndex, children }) => {
+const Table = ({
+  tableName,
+  handleDeleteTable,
+  addColumn,
+  addIndex,
+  children,
+  setNameTable,
+}) => {
+  const [contentEditable, setContentEditable] = useState(false);
+
+  const availableInputEdit = (e) => {
+    e.preventDefault();
+    setContentEditable(true);
+  };
+
+  const KeepOnChangeInput = (e) => {
+    setNameTable(e.target.value);
+  };
+
+  const saveChangesCloseEdit = (e) => {
+    e.preventDefault();
+
+    const emptyStringName = "unnamed_table";
+    if (e.target.value !== "") {
+      KeepOnChangeInput(e);
+    } else {
+      setNameTable(emptyStringName);
+    }
+
+    setContentEditable(false);
+  };
+
+  const saveChangeOnEnter = (e) => {
+    if (e.key === "Enter") {
+      saveChangesCloseEdit(e);
+    }
+  };
 
   return (
     <Fragment>
@@ -10,13 +46,39 @@ const Table = ({ index, handleDeleteTable, addColumn, addIndex, children }) => {
         <label htmlFor="table" className="table__label"></label>
 
         <div className="table__header">
-          <div className="table__name">{`Table_${index + 1}`}</div>
-          <div className="table__buttons">
-            <button className="table__button">&#128221;</button>
-            <button className="table__button" onClick={handleDeleteTable}>
-              &#128465;
-            </button>
-          </div>
+          {contentEditable ? (
+            <input
+              type="text"
+              className="table__name table__name-input"
+              autoFocus
+              onChange={KeepOnChangeInput}
+              onBlur={saveChangesCloseEdit}
+              onKeyPress={saveChangeOnEnter}
+              value={tableName}
+            />
+          ) : (
+            <div className="table__name">{tableName}</div>
+          )}
+
+          {contentEditable ? (
+            <div className="table__buttons">
+              <button
+                className="table__button table__button-edit-ok"
+                onClick={saveChangesCloseEdit}
+              >
+                &#9989;
+              </button>
+            </div>
+          ) : (
+            <div className="table__buttons">
+              <button className="table__button" onClick={availableInputEdit}>
+                &#128221;
+              </button>
+              <button className="table__button" onClick={handleDeleteTable}>
+                &#128465;
+              </button>
+            </div>
+          )}
         </div>
         <div className="table__details">
           <div className="table__data">{children}</div>
