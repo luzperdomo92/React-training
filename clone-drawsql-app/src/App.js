@@ -28,7 +28,7 @@ function App() {
       {
         ...tableData,
         id: uuidv4(),
-        name:`Table_${dbTables.length + 1}`,
+        name: `Table_${dbTables.length + 1}`,
         columns: [{ ...columnData, id: uuidv4() }],
       },
     ]);

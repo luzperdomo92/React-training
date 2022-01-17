@@ -51,6 +51,7 @@ const Table = ({
               type="text"
               className="table__name table__name-input"
               autoFocus
+              onFocus={(e) => e.target.select()}
               onChange={KeepOnChangeInput}
               onBlur={saveChangesCloseEdit}
               onKeyPress={saveChangeOnEnter}
@@ -60,25 +61,31 @@ const Table = ({
             <div className="table__name">{tableName}</div>
           )}
 
-          {contentEditable ? (
-            <div className="table__buttons">
+          <div className="table__buttons">
+            {contentEditable ? (
               <button
                 className="table__button table__button-edit-ok"
                 onClick={saveChangesCloseEdit}
               >
                 &#9989;
               </button>
-            </div>
-          ) : (
-            <div className="table__buttons">
-              <button className="table__button" onClick={availableInputEdit}>
-                &#128221;
-              </button>
-              <button className="table__button" onClick={handleDeleteTable}>
-                &#128465;
-              </button>
-            </div>
-          )}
+            ) : (
+              <Fragment>
+                <button
+                  className="table__button table__button-hover-visibility"
+                  onClick={availableInputEdit}
+                >
+                  &#128221;
+                </button>
+                <button
+                  className="table__button table__button-hover-visibility"
+                  onClick={handleDeleteTable}
+                >
+                  &#128465;
+                </button>
+              </Fragment>
+            )}
+          </div>
         </div>
         <div className="table__details">
           <div className="table__data">{children}</div>
