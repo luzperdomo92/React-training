@@ -18,6 +18,14 @@ const tableData = {
   comment: "",
   color: "",
 };
+const createNewColumn = (table) => {
+  return {
+    ...columnData,
+    id: uuidv4(),
+    name:
+      table.columns.length === 0 ? "id" : `column_${table.columns.length + 1}`,
+  };
+};
 
 function App() {
   const [dbTables, setDbTables] = useState([]);
@@ -28,8 +36,7 @@ function App() {
       {
         ...tableData,
         id: uuidv4(),
-        name: `Table_${dbTables.length + 1}`,
-        columns: [{ ...columnData, id: uuidv4() }],
+        columns: [createNewColumn(tableData)],
       },
     ]);
   };
@@ -49,9 +56,9 @@ function App() {
   };
 
   const addColumn = (tableId) => {
-    const newTable = dbTables.map((table) => {
-      if (table.id === tableId) {
-        table.columns = [...table.columns, { ...columnData, id: uuidv4() }];
+    const newTable = dbTables.map(table => {
+      if(table.id === tableId) {
+        table.columns = [...table.columns, { ...columnData, id: uuidv4() }]
       }
       return table;
     });
@@ -122,7 +129,7 @@ function App() {
               setNameTable={(name) => setNameTable(name, tableObj.id)}
             >
               <Fragment>
-                {tableObj.columns.map((column, index) => (
+                {tableObj.columns.map((column) => (
                   <TableColumn
                     key={column.id}
                     column={column}
@@ -130,7 +137,6 @@ function App() {
                     setNameColumn={(e) =>
                       setNameColumn(e.target.value, tableObj.id, column.id)
                     }
-                    index={index}
                   />
                 ))}
 
@@ -140,7 +146,8 @@ function App() {
                       tableObj.indexes.map((index) => (
                         <TableIndexes
                           key={index.id}
-                          indexColumn={index}
+                          tableIndex={index}
+                          columns={tableObj.columns}
                           deleteIndex={() => deleteIndex(tableObj.id, index.id)}
                         />
                       ))}
