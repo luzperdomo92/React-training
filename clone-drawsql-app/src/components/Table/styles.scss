@@ -1,4 +1,4 @@
-@import '../../styles/base.scss';
+@import "../../styles/base.scss";
 
 .table {
   position: relative;
@@ -53,7 +53,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    // width: 170px;
     flex-basis: 63%;
     &-input {
       z-index: 2;
@@ -66,7 +65,7 @@
   }
 
   &__buttons {
-    display:flex;
+    display: flex;
     flex-basis: 35%;
     justify-content: end;
   }
@@ -105,5 +104,3 @@
     justify-content: space-between;
   }
 }
-
-

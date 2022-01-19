@@ -8,7 +8,7 @@ const Panel = ({ dbTables, setDbTables }) => {
       <div className="content-panel__render">
         {dbTables &&
           dbTables.map((table, index) => (
-            <TableCard key={table.id} table={table} index={index}/>
+            <TableCard key={table.id} table={table} index={index} />
           ))}
       </div>
     </div>

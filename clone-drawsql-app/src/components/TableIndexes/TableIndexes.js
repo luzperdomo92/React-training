@@ -2,8 +2,6 @@ import React from "react";
 import "./styles.scss";
 
 const TableIndexes = ({ indexColumn, deleteIndex }) => {
-
-
   return (
     <div className="index">
       <div className="index__name">

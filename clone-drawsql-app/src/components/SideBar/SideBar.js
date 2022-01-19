@@ -14,7 +14,6 @@ const SideBar = ({ createTable, children }) => {
         type="checkbox"
         id="menu"
         className="sideBar__input"
-        // value={open}
         defaultChecked={open}
         onChange={toggleSideBar}
       />

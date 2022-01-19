@@ -2,7 +2,6 @@ import React from "react";
 import "./styles.scss";
 
 const Navigation = () => {
-
   const saveChanges = () => {
     console.log("saving changes...");
   };

@@ -120,7 +120,6 @@ function App() {
               addColumn={() => addColumn(tableObj.id)}
               addIndex={() => addIndex(tableObj.id)}
               setNameTable={(name) => setNameTable(name, tableObj.id)}
-              // deleteColumn={(columnId) => deleteColumn(tableObj.id, columnId)}
             >
               <Fragment>
                 {tableObj.columns.map((column, index) => (

@@ -1,4 +1,4 @@
-@import '../../styles/base.scss';
+@import "../../styles/base.scss";
 .nav {
   display: flex;
   justify-content: space-between;
@@ -6,12 +6,12 @@
   flex-wrap: wrap;
 
   &__main {
-    display:flex;
+    display: flex;
     align-items: center;
     margin-right: 24px;
   }
   &__index {
-    display:flex;
+    display: flex;
     align-items: center;
   }
 
@@ -22,10 +22,10 @@
   }
 
   &__name {
-    color:$light-color;
+    color: $light-color;
     font-weight: $font-weight-bold;
     line-height: $line-height-medium;
-    display:none;
+    display: none;
     &--big {
       font-weight: $font-weight-regular;
     }
@@ -36,7 +36,7 @@
   &__options {
     color: $light-color;
     margin-left: 1rem;
-    display:none;
+    display: none;
     @media (min-width: 768px) {
       display: flex;
     }
@@ -45,7 +45,7 @@
   &__item {
     padding: 8px 16px;
     cursor: pointer;
-    &:hover{
+    &:hover {
       background: $hover-options-header;
       border-radius: 0.25rem;
     }
@@ -60,17 +60,17 @@
       display: block;
     }
   }
-  
+
   &__type-document {
     color: $lila-color;
     &:hover {
-      color:$light-color;
+      color: $light-color;
       text-decoration: underline;
     }
   }
 
   &__save-change {
-    display:flex;
+    display: flex;
     align-items: center;
   }
 
@@ -85,7 +85,7 @@
     width: 36px;
     height: 36px;
     cursor: pointer;
-    margin-left: 1rem
+    margin-left: 1rem;
   }
 }
 
@@ -99,7 +99,6 @@
   font-weight: $font-weight-semi-bold;
   border-radius: 0.25rem;
   cursor: pointer;
-
 
   &:hover {
     background: $light-color;
@@ -118,7 +117,6 @@
   color: $light-color;
   cursor: pointer;
 
-
   &:hover {
     background: $light-color;
   }
@@ -133,7 +131,3 @@
 .color-lila {
   color: $lila-color;
 }
-
-
-
-
