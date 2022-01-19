@@ -19,7 +19,6 @@ const tableData = {
   color: "",
 };
 
-
 function App() {
   const [dbTables, setDbTables] = useState([]);
 
@@ -29,6 +28,7 @@ function App() {
       {
         ...tableData,
         id: uuidv4(),
+        name:`Table_${dbTables.length + 1}`,
         columns: [{ ...columnData, id: uuidv4() }],
       },
     ]);
@@ -36,76 +36,90 @@ function App() {
 
   const handleDeleteTable = (id) => {
     setDbTables(dbTables.filter((table) => table.id !== id));
-  }
+  };
+
+  const setNameTable = (name, tableId) => {
+    const newTable = dbTables.map((table) => {
+      if (table.id === tableId) {
+        table.name = name;
+      }
+      return table;
+    });
+    setDbTables(newTable);
+  };
 
   const addColumn = (tableId) => {
-    const newTable = dbTables.map(table => {
-      if(table.id === tableId) {
-        table.columns = [...table.columns, { ...columnData, id: uuidv4() }]
+    const newTable = dbTables.map((table) => {
+      if (table.id === tableId) {
+        table.columns = [...table.columns, { ...columnData, id: uuidv4() }];
       }
       return table;
-    })
+    });
 
-    setDbTables(newTable)
-  }
+    setDbTables(newTable);
+  };
 
   const deleteColumn = (tableId, columnId) => {
-    const newTable = dbTables.map(table => {
-      if(table.id === tableId){
-        table.columns = table.columns.filter(column => column.id !== columnId)
-      }
-      return table
-    })
-
-    setDbTables(newTable)
-  }
-
-  const setNameColumn = (name, tableId, columnId) => {
-    const newTable = dbTables.map(table => {
-      if(table.id === tableId) {
-        let columnToName = table.columns.filter(column => column.id === columnId);
-        columnToName.map(columnName => columnName.name = name)
-      }
-      return table
-    })
-    setDbTables(newTable)
-  }
-
-  const addIndex = (tableId) => {
-    const newTable = dbTables.map(table => {
-      if(table.id === tableId) {
-        table.indexes = [...table.indexes, {...indexesData, id: uuidv4()}]
+    const newTable = dbTables.map((table) => {
+      if (table.id === tableId) {
+        table.columns = table.columns.filter(
+          (column) => column.id !== columnId
+        );
       }
       return table;
-    })
-    setDbTables(newTable)
-  }
+    });
+
+    setDbTables(newTable);
+  };
+
+  const setNameColumn = (name, tableId, columnId) => {
+    const newTable = dbTables.map((table) => {
+      if (table.id === tableId) {
+        let columnToName = table.columns.filter(
+          (column) => column.id === columnId
+        );
+        columnToName.map((columnName) => (columnName.name = name));
+      }
+      return table;
+    });
+    setDbTables(newTable);
+  };
+
+  const addIndex = (tableId) => {
+    const newTable = dbTables.map((table) => {
+      if (table.id === tableId) {
+        table.indexes = [...table.indexes, { ...indexesData, id: uuidv4() }];
+      }
+      return table;
+    });
+    setDbTables(newTable);
+  };
 
   const deleteIndex = (tableId, indexId) => {
-    const newTable = dbTables.map(table => {
-      if(table.id === tableId){
-        table.indexes = table.indexes.filter(index => index.id !== indexId)
+    const newTable = dbTables.map((table) => {
+      if (table.id === tableId) {
+        table.indexes = table.indexes.filter((index) => index.id !== indexId);
       }
-      return table
-    })
+      return table;
+    });
 
-    setDbTables(newTable)
-  }
+    setDbTables(newTable);
+  };
   console.log("dbTable app -->", dbTables);
-
 
   return (
     <div className="container">
       <Header />
       <SideBar dbTables={dbTables} createTable={createTable}>
         {dbTables &&
-          dbTables.map((tableObj, index) => (
+          dbTables.map((tableObj) => (
             <Table
               key={tableObj.id}
-              index={index}
+              tableName={tableObj.name}
               handleDeleteTable={() => handleDeleteTable(tableObj.id)}
               addColumn={() => addColumn(tableObj.id)}
               addIndex={() => addIndex(tableObj.id)}
+              setNameTable={(name) => setNameTable(name, tableObj.id)}
               // deleteColumn={(columnId) => deleteColumn(tableObj.id, columnId)}
             >
               <Fragment>
@@ -114,23 +128,25 @@ function App() {
                     key={column.id}
                     column={column}
                     deleteColumn={() => deleteColumn(tableObj.id, column.id)}
-                    setNameColumn={(e) => setNameColumn(e.target.value, tableObj.id, column.id)}
+                    setNameColumn={(e) =>
+                      setNameColumn(e.target.value, tableObj.id, column.id)
+                    }
                     index={index}
                   />
                 ))}
 
                 {tableObj.indexes.length >= 1 ? (
                   <Indexes>
-                    {tableObj.indexes && tableObj.indexes.map(index => (
-                      <TableIndexes
-                        key={index.id}
-                        indexColumn={index}
-                        deleteIndex={() => deleteIndex(tableObj.id, index.id)}
-                      />
-                    ))}
+                    {tableObj.indexes &&
+                      tableObj.indexes.map((index) => (
+                        <TableIndexes
+                          key={index.id}
+                          indexColumn={index}
+                          deleteIndex={() => deleteIndex(tableObj.id, index.id)}
+                        />
+                      ))}
                   </Indexes>
                 ) : null}
-
               </Fragment>
             </Table>
           ))}
