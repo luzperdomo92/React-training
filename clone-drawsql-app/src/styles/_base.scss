@@ -29,7 +29,23 @@ a {
 img {
   max-width: 100%;
 }
+input[type=text] {
+  text-overflow: ellipsis;
+  width: 100%;
+  padding: 4px 8px;
+  overflow: hidden;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  line-height: 1.25rem;
+  border-radius: 0.25rem;
+  border: 2px solid #fff;
+  appearance: none;
+  background-color: #fff;
+}
 
+input[type=text]:focus {
+  border-color: #38b2ac;
+}
 
 /* Utilities */
 .container {

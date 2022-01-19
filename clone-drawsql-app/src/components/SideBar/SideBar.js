@@ -5,8 +5,8 @@ const SideBar = ({ createTable, children }) => {
   const [open, setOpen] = useState(false);
   const toggleSideBar = () => {
     console.log("toggleSidebar", open);
-    setOpen(!open)
-  }
+    setOpen(!open);
+  };
 
   return (
     <aside className="sideBar">
@@ -14,7 +14,6 @@ const SideBar = ({ createTable, children }) => {
         type="checkbox"
         id="menu"
         className="sideBar__input"
-        // value={open}
         defaultChecked={open}
         onChange={toggleSideBar}
       />

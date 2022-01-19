@@ -1,4 +1,4 @@
-@import '../../styles/base.scss';
+@import "../../styles/base.scss";
 
 .sideBar {
   $this: &;
@@ -12,7 +12,7 @@
     }
 
     &:checked ~ #{$this}__label::before {
-      content: '❯';
+      content: "❯";
     }
 
     &:checked ~ #{$this}__nav {
@@ -23,12 +23,12 @@
   &__label {
     user-select: none;
     left: 300px;
-    height:35px;
+    height: 35px;
     width: 35px;
     display: block;
     position: fixed;
     background: $drawer-color;
-    margin: .5rem 0;
+    margin: 0.5rem 0;
     border-radius: 0.25rem;
     z-index: 1;
     cursor: pointer;
@@ -38,13 +38,12 @@
     }
 
     &:before {
-      content: '❮';
+      content: "❮";
       display: block;
       position: absolute;
       color: #000;
       left: 13px;
       top: 7px;
-
     }
 
     &:hover {
@@ -68,7 +67,7 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid #b8c2cc;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   }
 
   &__name {
@@ -76,7 +75,6 @@
     line-height: $line-height-extra-large;
     margin-left: 12px;
   }
-
 
   &__tables {
     overflow-y: hidden;

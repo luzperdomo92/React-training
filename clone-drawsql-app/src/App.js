@@ -28,7 +28,7 @@ function App() {
       {
         ...tableData,
         id: uuidv4(),
-        name:`Table_${dbTables.length + 1}`,
+        name: `Table_${dbTables.length + 1}`,
         columns: [{ ...columnData, id: uuidv4() }],
       },
     ]);
@@ -120,7 +120,6 @@ function App() {
               addColumn={() => addColumn(tableObj.id)}
               addIndex={() => addIndex(tableObj.id)}
               setNameTable={(name) => setNameTable(name, tableObj.id)}
-              // deleteColumn={(columnId) => deleteColumn(tableObj.id, columnId)}
             >
               <Fragment>
                 {tableObj.columns.map((column, index) => (
